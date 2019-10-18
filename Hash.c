@@ -3,18 +3,22 @@
 #include<string.h>
 #include<ctype.h>
 #define size 26
+
 struct dict
 {
     char s[10];
     struct dict *next;
 };
+
 struct dict *hash[size] = {NULL};
+
 int findHash(char c)
 {
     int n;
     n = ((int)(tolower(c) - 'a'))%size;
     return n;
 }
+
 void insert(char a[])
 {
     int hashValue = findHash(a[0]);
@@ -36,6 +40,7 @@ void insert(char a[])
         hash[hashValue] = nn;
     }
 }
+
 void print()
 {
     int i;
@@ -54,9 +59,14 @@ void print()
         printf("NULL\n");
     }
 }
+
 void main()
 {
-    char a[] = "Apple";
+    char *s;
+    s = malloc(sizeof(char));
+    
+    
+    /* char a[] = "Apple";
     char d[] = "Ball";
     char b[] = "Auto";
     char c[] = "Android";
@@ -66,5 +76,5 @@ void main()
     insert(c);
     insert(d);
     insert(b);
-    print();
+    print();*/
 }
