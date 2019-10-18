@@ -6,7 +6,7 @@
 
 struct dict
 {
-    char s[10];
+    char s[100];
     struct dict *next;
 };
 
@@ -41,7 +41,23 @@ void insert(char a[])
     }
 }
 
-void print()
+void printLetter(char c)
+{
+    int i = findHash(c);
+    printf("%c\t - \t",toupper((char)i+'a'));
+    if(hash[i])
+    {
+        struct dict *temp = hash[i];
+        while(temp)
+        {
+            printf("%s -> ",temp->s);
+            temp=temp->next;
+        }
+    }
+    printf("NULL\n");
+}
+
+void printAll()
 {
     int i;
     for(i=0;i<size;i++)
@@ -62,19 +78,51 @@ void print()
 
 void main()
 {
-    char *s;
-    s = malloc(sizeof(char));
-    
-    
-    /* char a[] = "Apple";
-    char d[] = "Ball";
-    char b[] = "Auto";
-    char c[] = "Android";
-    char e[] = "Basket";
-    insert(a);
-    insert(e);
-    insert(c);
-    insert(d);
-    insert(b);
-    print();*/
+    char s[100];
+    int choice,flag = 1;
+    char letter;
+    while (flag)
+    {    
+        printf("\n1.Insert\n2.Display words of specific character\n3.Display all\n4.Exit\nEnter your choice : ");
+        scanf("%d",&choice);
+        switch (choice)
+        {
+        case 1:
+            printf("Enter a string : ");
+            scanf("%s",s);
+            insert(s);
+            break;
+        case 2:
+            printf("Enter a letter to display the words : " );
+            scanf(" %c",letter);
+            printLetter(letter);
+            break;
+        case 3:
+            printAll();
+            break;  
+        case 4:
+            flag=0;
+            break;
+        default:
+            printf("Enter a valid choice\n");
+        }
+    }
+    printf("Do you want to See the Hash Table ? (y/Y) : ");
+    scanf(" %c",&letter);
+    if(letter == 'y' || letter == 'Y')
+    {
+        printf("Do you want to see for specific letter ? (y/Y) : ");
+        scanf(" %c",&letter);
+        if(letter == 'y' || letter == 'Y')
+        {
+            printf("Enter a letter to display the words : " );
+            scanf(" %c",letter);
+            printLetter(letter);
+        }
+        else
+        {
+            printAll();
+        }
+    }
+
 }
