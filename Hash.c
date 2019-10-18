@@ -94,7 +94,7 @@ void main()
             break;
         case 2:
             printf("Enter a letter to display the words : " );
-            scanf(" %c",letter);
+            scanf(" %c",&letter);
             printLetter(letter);
             break;
         case 3:
@@ -116,7 +116,7 @@ void main()
         if(letter == 'y' || letter == 'Y')
         {
             printf("Enter a letter to display the words : " );
-            scanf(" %c",letter);
+            scanf(" %c",&letter);
             printLetter(letter);
         }
         else
