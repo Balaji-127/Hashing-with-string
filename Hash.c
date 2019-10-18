@@ -44,7 +44,7 @@ void insert(char a[])
 void printLetter(char c)
 {
     int i = findHash(c);
-    printf("%c\t - \t",toupper((char)i+'a'));
+    printf("\n%c\t - \t",toupper((char)i+'a'));
     if(hash[i])
     {
         struct dict *temp = hash[i];
@@ -62,18 +62,19 @@ void printAll()
     int i;
     for(i=0;i<size;i++)
     {
-        printf("%c\t - \t",toupper((char)i+'a'));
         if(hash[i])
         {
+            printf("\n%c\t - \t",toupper((char)i+'a'));
             struct dict *temp = hash[i];
             while(temp)
             {
                 printf("%s -> ",temp->s);
                 temp=temp->next;
             }
+            printf("NULL\n");
         }
-        printf("NULL\n");
     }
+    printf("All other letters do not contain any word\n");
 }
 
 void main()
@@ -83,17 +84,17 @@ void main()
     char letter;
     while (flag)
     {    
-        printf("\n1.Insert\n2.Display words of specific character\n3.Display all\n4.Exit\nEnter your choice : ");
+        printf("\n1.Insert\n2.Display words of specific character\n3.Display all\n4.Exit\n\nEnter your choice : ");
         scanf("%d",&choice);
         switch (choice)
         {
         case 1:
-            printf("Enter a string : ");
+            printf("\nEnter a string : ");
             scanf("%s",s);
             insert(s);
             break;
         case 2:
-            printf("Enter a letter to display the words : " );
+            printf("\nEnter a letter to display the words : " );
             scanf(" %c",&letter);
             printLetter(letter);
             break;
@@ -104,18 +105,18 @@ void main()
             flag=0;
             break;
         default:
-            printf("Enter a valid choice\n");
+            printf("\nEnter a valid choice\n");
         }
     }
-    printf("Do you want to See the Hash Table ? (y/Y) : ");
+    printf("\nDo you want to See the Hash Table ? (y/Y) : ");
     scanf(" %c",&letter);
     if(letter == 'y' || letter == 'Y')
     {
-        printf("Do you want to see for specific letter ? (y/Y) : ");
+        printf("\nDo you want to see for specific letter ? (y/Y) : ");
         scanf(" %c",&letter);
         if(letter == 'y' || letter == 'Y')
         {
-            printf("Enter a letter to display the words : " );
+            printf("\nEnter a letter to display the words : " );
             scanf(" %c",&letter);
             printLetter(letter);
         }
