@@ -1,4 +1,4 @@
-#Hash of Strings
+# Hash of Strings
 
 This is used to Hash the given strings and map it to separate Hash values.
 
